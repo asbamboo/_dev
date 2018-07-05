@@ -9,9 +9,8 @@ do
     then
         echo '正在同步目录' $dir
         cd $dir        
-        head=`cat .git/HEAD`
-        v=`echo "$head" | sed -e "s#.*heads/##"`
-        git pull origin $v
+        git status
         cd ../
+        echo '-------------------------------'
     fi
 done

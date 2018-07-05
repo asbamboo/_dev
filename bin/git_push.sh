@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd ../../
+path=`pwd`
+echo $path
 
 for dir in ./*
 do
