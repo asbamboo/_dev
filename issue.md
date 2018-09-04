@@ -1,0 +1,10 @@
+需要整理demo中config的service统一需要在framework中先定义
+http模块打算固定，psr7的内容。在framework中继承后加以扩展。 request.在router::matchreques后setAttrtube设置匹配道德路由信息等。response的redirectResponse搬到framework下边
+考虑在kernel->run里面添加一个application层，所有服务、配置信息等都归于application。
+添加异常处理页面。
+权限的配置，介于rule interface只有一个get方法时，配置很麻烦，考虑添加一个precondition方法返回也是bool。如果precondition满足的情况下，再去使用get方法判断权限
+router，framework的文档编写
+framework的全面测试
+router, framework, framework-demo.添加composer信息
+
+文档样式修改。
