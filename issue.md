@@ -22,11 +22,22 @@
     -- 2018.09.05 17:00
     
 #http模块打算固定，psr7的内容。在framework中继承后加以扩展。 request.在router::matchreques后setAttrtube设置匹配道德路由信息等。response的redirectResponse搬到framework下边
+    
+    -- 将实现psr message规范的基类放在psr目录下。然后在做扩展。
+    -- 2018.09.06 17:00
+
 #考虑在kernel->run里面添加一个application层，所有服务、配置信息等都归于application。
-#router，framework的文档编写
+
+    -- 将原来不太合理的kernel继承继承修改为只有一个kernel。添加一个applicationInterface，console与http实现这个接口后各自运行
+    -- 2018.09.06 17:00
+
+
+#自动注入功能
+
+#目前没有使用veision的地方 version文件先删除。文档->编码规范，需要要修改
+#http, templete, router，framework的文档编写
 #framework的全面测试
 #router, framework, framework-demo.添加composer信息
-#自动注入功能
 #文档样式修改。
 #debug模块
 #logger模块
