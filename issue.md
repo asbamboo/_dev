@@ -31,13 +31,15 @@
     -- 将原来不太合理的kernel继承继承修改为只有一个kernel。添加一个applicationInterface，console与http实现这个接口后各自运行
     -- 2018.09.06 17:00
 
-
 #自动注入功能
+	-- 1. 添加一个变量service => [id]
+			container::set 的时候push该变量只加入一个类集成另一个类。那需要将这个类和它继承的每一个类都当做一个service变量push到那个记住service映射关系的变量中
+    -- 2. 如果一个service还从来没被调用过，但是这个service存在于container::ServiceMappings里面
 
 #目前没有使用veision的地方 version文件先删除。文档->编码规范，需要要修改
+#文档样式修改。	
 #http, templete, router，framework的文档编写
 #framework的全面测试
 #router, framework, framework-demo.添加composer信息
-#文档样式修改。
 #debug模块
 #logger模块
