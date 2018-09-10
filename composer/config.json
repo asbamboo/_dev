@@ -1,0 +1,41 @@
+{
+    "config": {},
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        },
+        "asbamboo-autoload": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/autoload.git"
+        },
+        "asbamboo-di": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/di.git"
+        },
+        "asbamboo-helper": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/helper.git"
+        },
+        "asbamboo-event": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/event.git"
+        },
+        "asbamboo-database": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/database.git"
+        },
+        "asbamboo-http": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/http.git"
+        },
+        "asbamboo-router": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/router.git"
+        },
+        "asbamboo-session": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/session.git"
+        }
+    }
+}
