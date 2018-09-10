@@ -9,21 +9,25 @@
             "type": "vcs",
             "url": "https://github.com/asbamboo/autoload.git"
         },
+        "asbamboo-console": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/console.git"
+        },
+        "asbamboo-database": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/database.git"
+        },
         "asbamboo-di": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/di.git"
-        },
-        "asbamboo-helper": {
-            "type": "vcs",
-            "url": "https://github.com/asbamboo/helper.git"
         },
         "asbamboo-event": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/event.git"
         },
-        "asbamboo-database": {
+        "asbamboo-helper": {
             "type": "vcs",
-            "url": "https://github.com/asbamboo/database.git"
+            "url": "https://github.com/asbamboo/helper.git"
         },
         "asbamboo-http": {
             "type": "vcs",
@@ -32,6 +36,10 @@
         "asbamboo-router": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/router.git"
+        },
+        "asbamboo-security": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/security.git"
         },
         "asbamboo-session": {
             "type": "vcs",
