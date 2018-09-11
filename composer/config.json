@@ -44,6 +44,14 @@
         "asbamboo-session": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/session.git"
+        },
+        "asbamboo-template": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/template.git"
+        },
+        "asbamboo-framework": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/framework.git"
         }
     }
 }
