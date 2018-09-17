@@ -52,6 +52,10 @@
         "asbamboo-framework": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/framework.git"
+        },
+        "asbamboo-framework-standard": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/framework-standard.git"
         }
     }
 }
