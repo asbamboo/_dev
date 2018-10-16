@@ -1,0 +1,93 @@
+* 显示使用docker去运行gitlab环境， hostname是自定义的域名 external_url应该是gitlab访问地址 下面的端口号都可以做变更
+
+	sudo docker run --detach \
+    --hostname gitlab.example.com \
+    --env GITLAB_OMNIBUS_CONFIG="external_url 'http://my.domain.com/'; gitlab_rails['lfs_enabled'] = true;" \
+    --publish 443:443 --publish 80:80 --publish 22:22 \
+    --name gitlab \
+    --restart always \
+    --volume /srv/gitlab/config:/etc/gitlab \
+    --volume /srv/gitlab/logs:/var/log/gitlab \
+    --volume /srv/gitlab/data:/var/opt/gitlab \
+    gitlab/gitlab-ce:latest
+    
+    
+* 容器运行起来后，一致没有访问成功，有时候是502错误，有时候不能链接。
+* 后来删除刚才的容器和生成的一堆文件后，重新执行docker run，同时使用docker logs gitlab -f跟踪日志,看到日志末尾异常
+	
+	Running handlers:
+	Running handlers complete
+	There was an error running gitlab-ctl reconfigure:
+	
+	execute[clear the gitlab-rails cache] (gitlab::gitlab-rails line 403) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received ''
+	---- Begin output of /opt/gitlab/bin/gitlab-rake cache:clear ----
+	STDOUT: 
+	STDERR: 
+	---- End output of /opt/gitlab/bin/gitlab-rake cache:clear ----
+	Ran /opt/gitlab/bin/gitlab-rake cache:clear returned 
+	
+	Chef Client failed. 414 resources updated in 03 minutes 50 seconds
+	
+* 而后执行sudo docker exec -it gitlab /bin/bash 操作docker容器
+* 手动执行 gitlab-ctl reconfigure 发现错误原因是Cannot allocate memory，通过上网百度得知，gitlab环境要求 memory + swap =  1G以上
+
+	Recipe: gitlab::default
+	  * directory[/etc/gitlab] action create (up to date)
+	  
+	  ================================================================================
+	  Recipe Compile Error in /opt/gitlab/embedded/cookbooks/cache/cookbooks/gitlab/recipes/default.rb
+	  ================================================================================
+	  
+	  Errno::ENOMEM
+	  -------------
+	  Cannot allocate memory - fork(2)
+	  
+
+* 后来增加了swap
+	
+	[root@asbamboo srv]# free -m
+	              total        used        free      shared  buff/cache   available
+	Mem:            991         681          59          66         250          70
+	Swap:             0           0           0
+	[root@asbamboo srv]# mkdir /swapfile
+	[root@asbamboo srv]# cd /swapfile
+	[root@asbamboo swapfile]# sudo dd if=/dev/zero of=swap bs=1024 count=2000000
+	记录了2000000+0 的读入
+	记录了2000000+0 的写出
+	2048000000字节(2.0 GB)已复制，7.71841 秒，265 MB/秒
+	[root@asbamboo swapfile]# 
+	[root@asbamboo swapfile]# sudo mkswap -f  swap
+	正在设置交换空间版本 1，大小 = 1999996 KiB
+	无标签，UUID=1150e430-0167-4607-8417-5c6ec896e31d
+	[root@asbamboo swapfile]# 
+	[root@asbamboo swapfile]# sudo swapon swap
+	swapon: /swapfile/swap：不安全的权限 0644，建议使用 0600。
+	[root@asbamboo swapfile]# 
+	[root@asbamboo swapfile]# free -m
+	              total        used        free      shared  buff/cache   available
+	Mem:            991         789          68          10         134          44
+	Swap:          1953         182        1770
+
+	
+* 然后从新执行docker面的 gitlab-ctl reconfigure 后配置成功
+
+	
+	[root@asbamboo swapfile]# sudo docker exec -it gitlab /bin/bash
+
+	^[[A
+	root@gitlab:/# 
+	root@gitlab:/# gitlab-ctl reconfigure
+	Starting Chef Client, version 13.6.4
+	resolving cookbooks for run list: ["gitlab"]
+	Synchronizing Cookbooks:
+	  - gitlab (0.0.1)
+	  - package (0.1.0)
+	  - postgresql (0.1.0)
+	  - registry (0.1.0)
+	  - mattermost (0.1.0)
+	  - consul (0.0.0)
+	  - gitaly (0.1.0)
+	
+	
+	
+	
