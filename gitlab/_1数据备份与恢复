@@ -2,12 +2,12 @@
 
 
 
-sudo docker exec gitlab gitlab-rake gitlab:backup:create
-
-
 sudo docker exec gitlab gitlab-ctl stop unicorn
 
 sudo docker exec gitlab gitlab-ctl stop sidekiq
+
+
+sudo docker exec gitlab gitlab-rake gitlab:backup:create
 
 
 sudo docker exec gitlab gitlab-rake gitlab:backup:restore BACKUP=1539696245_2018_10_16_11.3.4
