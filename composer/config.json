@@ -33,6 +33,10 @@
             "type": "vcs",
             "url": "https://github.com/asbamboo/router.git"
         },
+        "asbamboo-openpay": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/openpay.git"
+        },
         "asbamboo-security": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/security.git"
