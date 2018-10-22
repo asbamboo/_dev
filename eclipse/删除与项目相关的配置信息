@@ -1,0 +1,5 @@
+rm  -rf  ~/.cache/Eclipse/ \
+rm -rf ~/.eclipse/ \
+rm -rf /www/asbamboo/.buildpath \
+rm -rf /www/asbamboo/.project \
+rm -rf /www/asbamboo/.settings

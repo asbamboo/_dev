@@ -37,6 +37,14 @@
             "type": "vcs",
             "url": "https://github.com/asbamboo/openpay.git"
         },
+        "asbamboo-openpay-alipay": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/openpay-alipay.git"
+        },
+        "asbamboo-openpay-wxpay": {
+            "type": "vcs",
+            "url": "https://github.com/asbamboo/openpay-wxpay.git"
+        },
         "asbamboo-security": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/security.git"
@@ -60,6 +68,10 @@
         "asbamboo-framework-standard": {
             "type": "vcs",
             "url": "https://github.com/asbamboo/framework-standard.git"
+        },
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
         }
     }
 }
